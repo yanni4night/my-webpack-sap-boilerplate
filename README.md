@@ -20,6 +20,7 @@ npm run prod
 ### loaders
  
  + [autoprefixer-loader](http://npmjs.org/autoprefixer-loader)
+ + [url-loader](http://npmjs.org/url-loader)
  + [css-loader](http://npmjs.org/css-loader)
  + [eslint-loader](http://npmjs.org/eslint-loader)
  + [file-loader](http://npmjs.org/file-loader)
