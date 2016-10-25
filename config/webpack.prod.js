@@ -13,13 +13,13 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
-const CONFIG = require('./config.js');
 
 module.exports = webpackMerge(commonConfig, {
     output: {
-        filename: `${CONFIG.STATIC}/scripts/[name].[chunkhash].js`
+        filename: '[name].[chunkhash].js'
     },
     plugins: [
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {

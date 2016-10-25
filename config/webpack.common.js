@@ -14,7 +14,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackShellPlugin = require('webpack-shell-plugin');
-
+const path = require('path');
 const CONFIG = require('./config.js');
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
     },
     output: {
         publicPath: './',
-        path: `${__dirname}/../${CONFIG.OUTPUT}`
+        path: path.join(__dirname, '..', CONFIG.OUTPUT)
     },
     resolve: {
         extensions: ['', '.js']
@@ -40,10 +40,13 @@ module.exports = {
             exclude: /node_modules/
         }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!autoprefixer-loader")
         }, {
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize!autoprefixer-loader!less-loader")
+        }, {
+            test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+            loader: `url-loader?limit=1024&name=[name].[hash].[ext]`
         }]
     },
     bail: true,
@@ -52,10 +55,10 @@ module.exports = {
         new WebpackShellPlugin({
             onBuildStart: [`rm -rf ${CONFIG.OUTPUT}`]
         }),
-        new ExtractTextPlugin(`${CONFIG.STATIC}/styles/[name].[chunkhash].css`),
+        new ExtractTextPlugin(`[name].[contenthash].css`),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: `${CONFIG.STATIC}/scripts/[name].[hash].js`,
+            filename: `[name].[hash].js`,
             chunks: ['main', 'about']
         }),
         new HtmlWebpackPlugin({
@@ -71,6 +74,11 @@ module.exports = {
             template: './src/tpls/about.html',
             chunks: ['vendor', 'common', 'about'],
             chunksSortMode: CONFIG.sortChunks
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
         })
     ]
 };

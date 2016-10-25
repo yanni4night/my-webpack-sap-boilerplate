@@ -14,11 +14,10 @@ const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
-const CONFIG = require('./config.js');
 
 module.exports = webpackMerge(commonConfig, {
     output: {
-        filename: `${CONFIG.STATIC}/scripts/[name].[hash].js`,
+        filename: '[name].[hash].js',
         publicPath: 'http://localhost:8080/'
     },
     plugins: [
