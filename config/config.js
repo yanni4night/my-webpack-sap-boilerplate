@@ -11,7 +11,7 @@
  */
 'use strict';
 
-const highPriority = ['common', 'vendor'];
+const highPriority = ['vendor'];
 
 module.exports = {
     OUTPUT: 'dist',

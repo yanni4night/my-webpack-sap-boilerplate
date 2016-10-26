@@ -19,7 +19,6 @@ const CONFIG = require('./config.js');
 
 module.exports = {
     entry: {
-        vendor: './src/javascripts/vendor.js',
         main: './src/javascripts/main.js',
         about: './src/javascripts/about.js'
     },
@@ -57,7 +56,7 @@ module.exports = {
         }),
         new ExtractTextPlugin(`[name].[contenthash].css`),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
+            name: 'vendor',
             filename: `[name].[hash].js`,
             chunks: ['main', 'about']
         }),
@@ -65,14 +64,14 @@ module.exports = {
             title: 'index',
             filename: 'index.html',
             template: './src/tpls/index.html',
-            chunks: ['vendor', 'common', 'main'],
+            chunks: ['vendor', 'main'],
             chunksSortMode: CONFIG.sortChunks
         }),
         new HtmlWebpackPlugin({
             title: 'about',
             filename: 'about.html',
             template: './src/tpls/about.html',
-            chunks: ['vendor', 'common', 'about'],
+            chunks: ['vendor', 'about'],
             chunksSortMode: CONFIG.sortChunks
         }),
         new webpack.DefinePlugin({

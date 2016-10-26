@@ -17,7 +17,7 @@ const CONFIG = require('./config.js');
 
 module.exports = webpackMerge(commonConfig, {
     output: {
-        filename: `${CONFIG.STATIC}/scripts/[name].[hash].js`
+        filename: `[name].[hash].js`
     },
     plugins: [
         new BellOnBundlerErrorPlugin()

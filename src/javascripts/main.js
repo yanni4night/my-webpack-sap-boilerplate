@@ -12,4 +12,3 @@
 require('../stylesheets/main.less');
 require('./common/header');
 /*eslint-disable*/
-console.log(_.isString(String()));
