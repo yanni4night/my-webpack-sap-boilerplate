@@ -12,7 +12,6 @@
 'use strict';
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 
 module.exports = webpackMerge(commonConfig, {
@@ -21,7 +20,6 @@ module.exports = webpackMerge(commonConfig, {
         publicPath: 'http://localhost:8080/'
     },
     plugins: [
-        new DashboardPlugin(),
         new BellOnBundlerErrorPlugin()
     ],
     devServer: {

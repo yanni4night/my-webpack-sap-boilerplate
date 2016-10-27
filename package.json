@@ -5,7 +5,6 @@
   "main": "in",
   "scripts": {
     "dev": "webpack-dashboard -c cyan -- webpack-dev-server --config ./config/webpack.dev.js --content-base dist/",
-    "test": "NODE_ENV=test webpack",
     "prod": "NODE_ENV=prod webpack",
     "prepublish": "npm run prod"
   },

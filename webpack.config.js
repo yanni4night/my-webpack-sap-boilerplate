@@ -13,15 +13,14 @@
 const env = process.env.NODE_ENV;
 
 switch (env) {
-case 'production':
 case 'prod':
+case 'production':
     module.exports = require('./config/webpack.prod.js');
     break;
-case 'test':
-    module.exports = require('./config/webpack.test.js');
-    break;
-case 'development':
 case 'dev':
+case 'development':
+    module.exports = require('./config/webpack.dev.js');
+    break;
 default:
-    module.exports = require('./config/webpack.dev.js');;
+    module.exports = require('./config/webpack.build.js');
 }

@@ -11,15 +11,14 @@
  */
 'use strict';
 
-const highPriority = ['vendor'];
+const highPriorityChunks = ['vendor'];
 
 module.exports = {
     OUTPUT: 'dist',
-    STATIC: 'static',
     sortChunks: (prev, next) => {
         const prevName = prev.names[0];
         const nextName = next.names[0];
 
-        return highPriority.indexOf(prevName) < highPriority.indexOf(nextName);
+        return highPriorityChunks.indexOf(prevName) < highPriorityChunks.indexOf(nextName);
     }
 };

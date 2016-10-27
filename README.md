@@ -23,11 +23,8 @@ npm run prod
  + [url-loader](http://npmjs.org/url-loader)
  + [css-loader](http://npmjs.org/css-loader)
  + [eslint-loader](http://npmjs.org/eslint-loader)
- + [file-loader](http://npmjs.org/file-loader)
  + [img-loader](http://npmjs.org/img-loader)
- + [json-loader](http://npmjs.org/json-loader)
  + [less-loader](http://npmjs.org/less-loader)
- + [raw-loader](http://npmjs.org/raw-loader)
  + [style-loader](http://npmjs.org/style-loader)
 
 ### plugins
